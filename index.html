@@ -1,182 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>paul — sf</title>
-<meta name="description" content="Paul — software engineer in San Francisco. Backend systems and AI tools." />
-<meta name="color-scheme" content="dark light" />
-
-<!-- open graph -->
-<meta property="og:title" content="paul — sf" />
-<meta property="og:description" content="Software engineer in San Francisco. Backend systems and AI tools." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://francosae.github.io" />
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>%E2%96%B8</text></svg>" />
-
-<style>
-  :root{
-    --bg:#0b0d10;
-    --panel:#0f1216;
-    --line:#1c2128;
-    --fg:#c9d1d9;
-    --dim:#6e7681;
-    --dimmer:#4b525c;
-    --accent:#3fb950;   /* terminal green */
-    --accent-2:#58a6ff; /* link blue */
-    --sel:#264f78;
-  }
-  @media (prefers-color-scheme: light){
-    :root{
-      --bg:#f6f8fa; --panel:#ffffff; --line:#d0d7de;
-      --fg:#1f2328; --dim:#59636e; --dimmer:#8c959f;
-      --accent:#1a7f37; --accent-2:#0969da; --sel:#b6e3ff;
-    }
-  }
-  *{box-sizing:border-box}
-  ::selection{background:var(--sel);color:#fff}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;
-    background:
-      radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb, var(--accent) 6%, transparent), transparent),
-      var(--bg);
-    color:var(--fg);
-    font:15px/1.65 ui-monospace,"SF Mono",SFMono-Regular,"JetBrains Mono",Menlo,Consolas,monospace;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-  }
-  .win{
-    width:100%;
-    max-width:680px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:12px;
-    box-shadow:0 24px 60px -20px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.01) inset;
-    overflow:hidden;
-  }
-  .bar{
-    display:flex;align-items:center;gap:8px;
-    padding:11px 14px;
-    border-bottom:1px solid var(--line);
-    background:color-mix(in srgb, var(--panel) 82%, black);
-  }
-  .dot{width:11px;height:11px;border-radius:50%;background:var(--dimmer);opacity:.7}
-  .dot.r{background:#ff5f56}.dot.y{background:#ffbd2e}.dot.g{background:#27c93f}
-  .bar .path{margin-left:8px;color:var(--dim);font-size:12.5px}
-  .body{padding:26px 26px 30px}
-
-  .prompt{color:var(--dim)}
-  .prompt::before{content:"$ ";color:var(--accent)}
-  h1{
-    margin:2px 0 0;
-    font-size:30px;
-    font-weight:600;
-    letter-spacing:-.01em;
-  }
-  h1 .cur{
-    display:inline-block;width:.6ch;height:1.05em;
-    margin-left:.15ch;vertical-align:-.15em;
-    background:var(--accent);
-    animation:blink 1.15s steps(1) infinite;
-  }
-  @keyframes blink{50%{opacity:0}}
-  .sub{color:var(--dim);margin-top:4px}
-  .sub b{color:var(--fg);font-weight:600}
-
-  .rule{height:1px;background:var(--line);margin:22px 0}
-
-  .label{color:var(--dimmer);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
-
-  ul.work{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-  ul.work li a{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
-    align-items:baseline;
-    gap:14px;
-    padding:9px 10px;
-    margin:0 -10px;
-    border-radius:8px;
-    text-decoration:none;
-    color:var(--fg);
-    transition:background .12s ease;
-  }
-  ul.work li a:hover{background:color-mix(in srgb,var(--accent) 9%,transparent)}
-  ul.work .name{font-weight:600}
-  ul.work li a:hover .name{color:var(--accent)}
-  ul.work .name .arrow{color:var(--dimmer);opacity:0;margin-left:6px;transition:opacity .12s}
-  ul.work li a:hover .name .arrow{opacity:1;color:var(--accent)}
-  ul.work .desc{display:block;color:var(--dim);font-size:13px;font-weight:400;margin-top:2px}
-  ul.work .tags{color:var(--dimmer);font-size:12px;white-space:nowrap;text-align:right}
-
-  .links{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 20px}
-  .links a{color:var(--accent-2);text-decoration:none}
-  .links a::before{content:"↳ ";color:var(--dimmer)}
-  .links a:hover{text-decoration:underline}
-
-  footer{margin-top:26px;color:var(--dimmer);font-size:12px}
-
-  @media (max-width:520px){
-    .body{padding:22px 18px 26px}
-    h1{font-size:25px}
-    ul.work li a{grid-template-columns:1fr}
-    ul.work .tags{text-align:left;margin-top:4px}
-  }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paul</title>
+<meta name="description" content="Paul — software engineer in San Francisco. Infrastructure, backend systems, and AI tooling.">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13' font-family='Verdana'>P</text></svg>">
+<!-- Cloudflare Turnstile (client-side email gate) -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
-  <main class="win" aria-label="paul's site">
-    <div class="bar">
-      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-      <span class="path">~/paul</span>
+<div class="wrap">
+
+  <p class="name">Paul</p>
+  <p>Software engineer in San Francisco. I work on infrastructure and AI tooling at <a href="https://oliveapp.com">Olive</a>.</p>
+  <p>I care about backend systems, databases, and Go. Previously I built P2P payments infrastructure. I don't like shitty software.</p>
+  <p>
+    <span class="email-reveal" id="email-reveal">
+      <button type="button" class="email-btn" id="email-btn">Email</button>
+    </span>
+    / <a href="https://github.com/francosae">GitHub</a>
+  </p>
+  <div id="ts-box"></div>
+
+  <p class="h2 projects">Projects</p>
+  <div class="projects-list">
+
+    <div class="project">
+      <div class="thumb">screenshot</div>
+      <div class="body"><b>P2P Payments Platform</b><br>Microservice architecture for pooled funds — registration, money pools, P2P transactions, reporting, and compliance. Go, gRPC, Firebase, Plaid.<br><a href="https://github.com/francosae/P2P-Payments-Platform">Code</a></div>
     </div>
-    <div class="body">
-      <div class="prompt">whoami</div>
-      <h1>paul<span class="cur" aria-hidden="true"></span></h1>
-      <p class="sub">software engineer &middot; <b>san francisco</b><br />
-      i build backend systems and ai tools. i hate shitty software.</p>
 
-      <div class="rule"></div>
-
-      <p class="label">selected work</p>
-      <ul class="work">
-        <li><a href="https://github.com/francosae/P2P-Payments-Platform">
-          <span class="name">p2p payments platform<span class="arrow">→</span>
-            <span class="desc">microservices for pooled funds — registration, money pools, p2p transactions, compliance</span>
-          </span>
-          <span class="tags">go · grpc · plaid</span>
-        </a></li>
-        <li><a href="https://github.com/francosae/ai-interviewer">
-          <span class="name">ai interviewer<span class="arrow">→</span>
-            <span class="desc">real-time, interactive ai-powered mock interviews for prep</span>
-          </span>
-          <span class="tags">ts · realtime · llm</span>
-        </a></li>
-        <li><a href="https://github.com/francosae/fole">
-          <span class="name">fole<span class="arrow">→</span>
-            <span class="desc">platform for hyper online leisure engagement</span>
-          </span>
-          <span class="tags">go · gin · aws</span>
-        </a></li>
-        <li><a href="https://github.com/francosae/LoL-PlayerSearch">
-          <span class="name">lol player search<span class="arrow">→</span>
-            <span class="desc">match history & insights from the riot games api</span>
-          </span>
-          <span class="tags">js · riot api</span>
-        </a></li>
-      </ul>
-
-      <div class="links">
-        <a href="https://github.com/francosae">github</a>
-        <a href="mailto:paul@oliveapp.com">email</a>
-      </div>
-
-      <footer>built in a terminal, the way it should be.</footer>
+    <div class="project">
+      <div class="thumb">screenshot</div>
+      <div class="body"><b>AI Interviewer</b><br>Real-time, AI-powered mock interviews — an immersive way to prep for the real thing. TypeScript.<br><a href="https://github.com/francosae/ai-interviewer">Code</a></div>
     </div>
-  </main>
+
+    <div class="project">
+      <div class="thumb">screenshot</div>
+      <div class="body"><b>fole</b><br>Platform for hyper online leisure engagement. Go, Gin, Firebase/Supabase, AWS (ECR, RDS, ECS, S3).<br><a href="https://github.com/francosae/fole">Code</a></div>
+    </div>
+
+  </div>
+
+  <p class="h2"><a href="/writing/">Writing</a></p>
+  <ul>
+    <li><a href="/writing/replacing-a-job-queue-with-postgres/">Replacing a job queue with Postgres</a> <span class="muted">2026</span></li>
+    <li><a href="/writing/">More coming soon</a> <span class="muted">—</span></li>
+  </ul>
+
+  <p class="h2">Work</p>
+  <ul>
+    <li><b>Olive</b>, Software Engineer, San Francisco</li>
+    <!-- add earlier roles / education here -->
+  </ul>
+
+  <hr>
+  <p class="muted">Last updated September 2026.</p>
+</div>
+
+<script>
+(function () {
+  var SITEKEY = "1x00000000000000000000AA"; // TODO: replace with your real Turnstile site key
+  var EMAIL_B64 = "cGF1bGZyYW5jby5lQGdtYWlsLmNvbQ=="; // paulfranco.e@gmail.com
+
+  var btn = document.getElementById("email-btn");
+  var box = document.getElementById("ts-box");
+  var reveal = document.getElementById("email-reveal");
+  var widgetRendered = false;
+
+  function showEmail() {
+    var addr = atob(EMAIL_B64);
+    reveal.innerHTML = '<a href="mailto:' + addr + '">' + addr + '</a>';
+    box.innerHTML = "";
+  }
+
+  function renderWidget() {
+    if (widgetRendered) return;
+    if (!window.turnstile) { setTimeout(renderWidget, 150); return; }
+    widgetRendered = true;
+    btn.disabled = true;
+    btn.textContent = "Verify to reveal email ↓";
+    window.turnstile.render(box, {
+      sitekey: SITEKEY,
+      theme: "light",
+      callback: showEmail
+    });
+  }
+
+  btn.addEventListener("click", renderWidget);
+})();
+</script>
 </body>
 </html>

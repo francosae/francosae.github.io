@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Paul — Writing</title>
+    <link>https://francosae.github.io/</link>
+    <description>Notes on backend systems, databases, and building software.</description>
+    <language>en-us</language>
+    <item>
+      <title>Replacing a job queue with Postgres</title>
+      <link>https://francosae.github.io/writing/replacing-a-job-queue-with-postgres/</link>
+      <guid>https://francosae.github.io/writing/replacing-a-job-queue-with-postgres/</guid>
+      <pubDate>Sun, 07 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Replacing a hand-rolled Redis job queue with a Postgres table and SELECT ... FOR UPDATE SKIP LOCKED.</description>
+    </item>
+  </channel>
+</rss>

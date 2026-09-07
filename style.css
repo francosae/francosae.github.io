@@ -1,0 +1,69 @@
+/* Personal engineering blog — classic, minimal. */
+html,body{margin:0;padding:0;background:#fff}
+body{
+  color:#111;
+  font-family:Verdana, Geneva, sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  padding:72px 24px 96px;
+  -webkit-text-size-adjust:100%;
+}
+a{color:#0000ee}
+a:visited{color:#551a8b}
+a:hover{color:#551a8b}
+
+.wrap{max-width:720px;margin:0 auto;text-wrap:pretty}
+.wrap.narrow{max-width:680px}
+
+.name{margin:0 0 20px;font-size:26px;font-weight:bold;line-height:1.2}
+.name a{color:#111}
+p{margin:0 0 20px}
+.crumb{margin:0 0 40px}
+.title{margin:0 0 6px;font-size:26px;font-weight:bold;line-height:1.2}
+.date{margin:0 0 36px;color:#777}
+.muted{color:#777}
+
+h2, .h2{margin:56px 0 12px;font-size:19px;font-weight:bold}
+.h2.projects{margin:56px 0 20px}
+h2 a, .h2 a{color:#111}
+
+ul{margin:0;padding-left:28px}
+li{margin-bottom:6px}
+
+.projects-list{display:flex;flex-direction:column;gap:28px}
+.project{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.project .body{flex:1 1 300px}
+.thumb{
+  width:200px;height:130px;flex:0 0 auto;
+  border:1px solid #ddd;background:#f7f7f7;
+  display:flex;align-items:center;justify-content:center;
+  color:#aaa;font-size:13px;
+}
+.thumb.wide{width:100%;height:320px}
+
+article p{margin:0 0 20px}
+article .sec{margin:36px 0 12px;font-size:19px;font-weight:bold}
+code{font-family:Menlo, Consolas, monospace;font-size:16px;background:#f3f3f3;padding:1px 4px}
+pre{
+  font-family:Menlo, Consolas, monospace;font-size:15px;line-height:1.5;
+  background:#f3f3f3;padding:16px 18px;margin:0 0 20px;overflow-x:auto;
+}
+pre code{background:none;padding:0;font-size:15px}
+figure{margin:28px 0}
+figcaption{margin:8px 0 0;color:#777;font-size:16px}
+
+hr{border:0;border-top:1px solid #ccc;margin:56px 0 24px}
+
+.note{
+  border:1px solid #e5e5e5;background:#fafafa;color:#555;
+  font-size:14px;padding:10px 14px;margin:0 0 28px;
+}
+
+/* email reveal */
+.email-reveal{display:inline}
+.email-btn{
+  font:inherit;color:#0000ee;background:none;border:0;padding:0;
+  cursor:pointer;text-decoration:underline;
+}
+.email-btn:hover{color:#551a8b}
+#ts-box{margin:14px 0 0}

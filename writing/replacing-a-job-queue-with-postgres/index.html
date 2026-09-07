@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replacing a job queue with Postgres — Paul</title>
+<meta name="description" content="Replacing a hand-rolled Redis job queue with a Postgres table and SELECT ... FOR UPDATE SKIP LOCKED.">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13' font-family='Verdana'>P</text></svg>">
+</head>
+<body>
+<div class="wrap narrow">
+  <p class="crumb"><a href="/">Paul</a> / <a href="/writing/">Writing</a></p>
+  <p class="title">Replacing a job queue with Postgres</p>
+  <p class="date">September 7, 2026</p>
+
+  <div class="note">Sample post — this is placeholder content shipped with the blog template. Replace it with your own writing.</div>
+
+  <article>
+    <p>For two years we ran a hand-rolled job queue on top of Redis. It worked, mostly. It also had a retry bug that surfaced maybe once a month, and I never found it. Last weekend I replaced the whole thing with a Postgres table and one query.</p>
+
+    <p class="sec">The problem</p>
+    <p>Jobs would occasionally run twice. Not often enough to page anyone, often enough that we had idempotency checks scattered through every handler. The queue itself was about 600 lines: enqueue, lease, heartbeat, retry, dead-letter. Each piece was simple. The interactions were not.</p>
+
+    <p class="sec">The replacement</p>
+    <p>Postgres has had <code>SELECT ... FOR UPDATE SKIP LOCKED</code> since 9.5. A worker grabs the next row nobody else holds, does the work, and deletes the row in the same transaction. If the worker dies, the transaction rolls back and the row is available again.</p>
+    <pre><code>DELETE FROM jobs
+WHERE id = (
+  SELECT id FROM jobs
+  WHERE run_at &lt;= now()
+  ORDER BY run_at
+  FOR UPDATE SKIP LOCKED
+  LIMIT 1
+)
+RETURNING *;</code></pre>
+    <p>That's the queue. No heartbeats, no leases, no separate service to keep alive.</p>
+
+    <figure>
+      <div class="thumb wide">chart / screenshot</div>
+      <figcaption>Duplicate job executions per day, before and after the switch.</figcaption>
+    </figure>
+
+    <p class="sec">What we lost</p>
+    <p>Throughput, on paper. Redis could enqueue faster. We were doing about 40 jobs a second and Postgres handles that without noticing. If you need ten thousand a second, this isn't for you. Most people don't.</p>
+
+    <p class="sec">What we gained</p>
+    <p>Jobs live in the same database as the data they operate on, so enqueueing a job is part of the same transaction as the write that caused it. That closed a whole class of bugs where the write committed and the enqueue didn't, or the other way around. And the retry bug is gone, because the code that had it is gone.</p>
+
+    <p>Code is <a href="https://github.com/francosae">on GitHub</a>.</p>
+  </article>
+
+  <hr>
+  <p class="muted"><a href="/writing/" style="color:#777">← All writing</a></p>
+</div>
+</body>
+</html>
