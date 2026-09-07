@@ -1,45 +1,32 @@
-/* Personal site — classic minimal type on a Y2K blue. */
+/* Personal site — flat Blogger blue, white text. */
 html,body{margin:0;padding:0}
-html{
-  background:
-    radial-gradient(1100px 700px at 50% -5%, #7fc3ff 0%, #2f7ae0 38%, #123a9e 100%) fixed,
-    #123a9e;
-}
+html{background:#0455cc}
 body{
-  color:#111;
+  color:#fff;
   font-family:Verdana, Geneva, sans-serif;
   font-size:16px;
   line-height:1.6;
   padding:64px 20px 96px;
   -webkit-text-size-adjust:100%;
 }
-a{color:#0000ee}
-a:visited{color:#551a8b}
-a:hover{color:#551a8b}
+a{color:#ffd54a}
+a:visited{color:#ffd54a}
+a:hover{color:#fff}
 
-/* white content card floating on the blue */
-.wrap{
-  max-width:720px;margin:0 auto;text-wrap:pretty;
-  background:#fff;
-  padding:44px 48px 40px;
-  border:1px solid #0b2a7a;
-  border-radius:8px;
-  box-shadow:0 18px 50px -12px rgba(8,24,80,.55), 0 2px 0 rgba(255,255,255,.4) inset;
-}
+.wrap{max-width:720px;margin:0 auto;text-wrap:pretty}
 .wrap.narrow{max-width:680px}
-@media (max-width:560px){ .wrap{padding:28px 22px 30px} }
 
 .name{margin:0 0 20px;font-size:26px;font-weight:bold;line-height:1.2}
-.name a{color:#111}
+.name a{color:#fff}
 p{margin:0 0 20px}
 .crumb{margin:0 0 40px}
 .title{margin:0 0 6px;font-size:26px;font-weight:bold;line-height:1.2}
-.date{margin:0 0 36px;color:#777}
-.muted{color:#777}
+.date{margin:0 0 36px;color:#bcd3ff}
+.muted{color:#bcd3ff}
 
 h2, .h2{margin:56px 0 12px;font-size:19px;font-weight:bold}
 .h2.projects{margin:56px 0 20px}
-h2 a, .h2 a{color:#111}
+h2 a, .h2 a{color:#fff}
 
 ul{margin:0;padding-left:28px}
 li{margin-bottom:6px}
@@ -66,7 +53,7 @@ pre code{background:none;padding:0;font-size:15px}
 figure{margin:28px 0}
 figcaption{margin:8px 0 0;color:#777;font-size:16px}
 
-hr{border:0;border-top:1px solid #ccc;margin:56px 0 24px}
+hr{border:0;border-top:1px solid rgba(255,255,255,.35);margin:56px 0 24px}
 
 .note{
   border:1px solid #e5e5e5;background:#fafafa;color:#555;
@@ -76,8 +63,8 @@ hr{border:0;border-top:1px solid #ccc;margin:56px 0 24px}
 /* email reveal */
 .email-reveal{display:inline}
 .email-btn{
-  font:inherit;color:#0000ee;background:none;border:0;padding:0;
+  font:inherit;color:#ffd54a;background:none;border:0;padding:0;
   cursor:pointer;text-decoration:underline;
 }
-.email-btn:hover{color:#551a8b}
+.email-btn:hover{color:#fff}
 #ts-box{margin:14px 0 0}
